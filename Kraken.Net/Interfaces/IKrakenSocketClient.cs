@@ -15,6 +15,14 @@ namespace Kraken.Net.Interfaces
     public interface IKrakenSocketClient: ISocketClient
     {
         /// <summary>
+        /// Set the API key and secret
+        /// </summary>
+        /// <param name="apiKey">The api key</param>
+        /// <param name="apiSecret">The api secret</param>
+        /// <param name="nonceProvider">Optional nonce provider. Careful providing a custom provider; once a nonce is sent to the server, every request after that needs a higher nonce than that</param>
+        void SetApiCredentials(string apiKey, string apiSecret, INonceProvider? nonceProvider = null);
+
+        /// <summary>
         /// Subscribe to ticker updates
         /// </summary>
         /// <param name="symbol">Symbol to subscribe to</param>
@@ -51,10 +59,10 @@ namespace Kraken.Net.Interfaces
         /// Subscribe to depth updates
         /// </summary>
         /// <param name="symbol">Symbol to subscribe to</param>
-        /// <param name="depth">Depth of the initial order book snapshot</param>
+        /// <param name="depth">Depth of the initial order book snapshot. 10, 25, 100, 500 or 1000</param>
         /// <param name="handler">Data handler</param>
         /// <returns>A stream subscription. This stream subscription can be used to be notified when the socket is disconnected/reconnected</returns>
-        Task<CallResult<UpdateSubscription>> SubscribeToDepthUpdatesAsync(string symbol, int depth, Action<DataEvent<KrakenStreamOrderBook>> handler);
+        Task<CallResult<UpdateSubscription>> SubscribeToOrderBookUpdatesAsync(string symbol, int depth, Action<DataEvent<KrakenStreamOrderBook>> handler);
 
         /// <summary>
         /// Subscribe to open order updates

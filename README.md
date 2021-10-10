@@ -90,6 +90,34 @@ For the basic client options see also the CryptoExchange.Net [docs](https://gith
 |`AuthBaseAddress`|The base address for authenticated subscriptions|`wss://ws-auth.kraken.com/`
 
 ## Release notes
+* Version 2.2.3 - 08 Oct 2021
+    * Updated CryptoExchange.Net to fix some socket issues
+
+* Version 2.2.2 - 06 Oct 2021
+    * Updated CryptoExchange.Net, fixing socket issue when calling from .Net Framework
+
+* Version 2.2.1 - 05 Oct 2021
+    * Updated CryptoExchange.Net
+
+* Version 2.2.0 - 29 Sep 2021
+    * Renamed SubscribeToDepthUpdatesAsync to SubscribeToOrderBookUpdatesAsync
+    * Updated CryptoExchange.Net
+
+* Version 2.1.3 - 22 Sep 2021
+    * Fixed nonce provider when running multiple program instances
+
+* Version 2.1.2 - 22 Sep 2021
+    * Added trace output for nonce
+
+* Version 2.1.1 - 21 Sep 2021
+    * Fix for nonce provider not working correctly in combination with other exchanges
+
+* Version 2.1.0 - 20 Sep 2021
+    * Fix for not recognizing DOGE/BTC because Kraken renames them to XDG/XBT in update messages
+    * Added custom nonce provider support
+    * Added missing SetApiCredentials method
+    * Updated CryptoExchange.Net
+
 * Version 2.0.11 - 15 Sep 2021
     * Updated CryptoExchange.Net
 
